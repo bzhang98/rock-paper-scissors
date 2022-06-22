@@ -10,6 +10,7 @@ function computerPlay() {
 
 //Takes two parameters and returns a string declaring the winner
 function playRound(playerSelection, computerSelection) {
+    let playerSelection = playerSelection.toLowerCase();
     let winner;
     if (playerSelection === 'rock') {
         switch(computerSelection) {
