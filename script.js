@@ -58,8 +58,9 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     for (let i = 0; i < 5; i++) {
+        console.log(`Round ${i + 1} of 5`)
         let playerSelection = prompt("Pick rock, paper, or scissors");
-        console.log(`You played ${playerSelection}`);
+        console.log(`You played ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}`);
         let computerSelection = computerPlay();
         
         //playRound returns a string declaring the winner, either 'player', 'computer' or, 'tie'
