@@ -71,12 +71,12 @@ function game() {
             playerScore++;
             console.log(`The computer plays ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`)
             console.log(`You Win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats 
-                ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`)
+                    ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`)
         } else if (winner === 'computer') {
             computerScore++;
             console.log(`The computer plays ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`)
             console.log(`You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats 
-                ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}`)
+                    ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}`)
         } else if (winner === 'tie') {
             console.log(`The computer plays ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`)
             console.log(`It's a tie! You both played ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}`)
