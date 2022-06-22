@@ -8,49 +8,42 @@ function computerPlay() {
     return options[rand];
 }
 
-//Takes two parameters and returns a string declaring the winner
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    let winner;
+//Returns the winner as a string
+function determineWinner(playerSelection, computerSelection) {
     if (playerSelection === 'rock') {
         switch(computerSelection) {
             case 'rock':
-                winner = 'tie';
-                break;
+                return 'tie';
             case 'paper':
-                winner = 'computer';
-                break;
+                return 'computer';
             case 'scissors':
-                winner = 'player';  
-                break;  
+                return 'player'; 
         }
     } else if(playerSelection === 'paper') {
         switch(computerSelection) {
             case 'rock':
-                winner = 'player';
-                break;
+                return 'player';
             case 'paper':
-                winner = 'tie';
-                break;
+                return 'tie';
             case 'scissors':
-                winner = 'computer';  
-                break;  
+                return 'computer';    
         }
     } else if(playerSelection === 'scissors') {
         switch(computerSelection) {
             case 'rock':
-                winner = 'computer';
-                break;
+                return 'computer';
             case 'paper':
-                winner = 'player';
-                break;
+                return 'player';
             case 'scissors':
-                winner = 'tie';  
-                break;  
+                return 'tie';
         }
     }
-    
-    return winner;
+}
+
+//Takes two parameters and returns a string declaring the winner
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    return determineWinner(playerSelection, computerSelection);
 }
 
 
