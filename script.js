@@ -8,8 +8,9 @@ function computerPlay() {
     return options[rand];
 }
 
-//Returns the winner as a string
-function determineWinner(playerSelection, computerSelection) {
+//Takes two parameters and returns a string declaring the winner
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
     if (playerSelection === 'rock') {
         switch(computerSelection) {
             case 'rock':
@@ -40,47 +41,87 @@ function determineWinner(playerSelection, computerSelection) {
     }
 }
 
-//Takes two parameters and returns a string declaring the winner
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    return determineWinner(playerSelection, computerSelection);
-}
+let playerScore = 0;
+let computerScore = 0;
+let gameOver = false;
 
+const scoreBoard = document.querySelector('.score');
+const gameOverMessage = document.querySelector('.winner')
+scoreBoard.textContent = `Player score: ${playerScore} Computer score: ${computerScore}`
 
-//Plays 5 rounds and returns the winner
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        console.log(`Round ${i + 1} of 5`)
-        let playerSelection = prompt("Pick rock, paper, or scissors");
-        playerSelection = playerSelection.toLowerCase();
-        console.log(`You played ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}`);
-        let computerSelection = computerPlay();
-        
-        //playRound returns a string declaring the winner, either 'player', 'computer' or, 'tie'
-        let winner = playRound(playerSelection, computerSelection);
-        if (winner === 'player') {
+const rock = document.querySelector('.rock');
+rock.addEventListener('click', () => {
+    if(!gameOver) {
+        const winner = playRound('rock', computerPlay());
+        if(winner === 'player') {
             playerScore++;
-            console.log(`The computer plays ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`)
-            console.log(`You Win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`)
-        } else if (winner === 'computer') {
+            scoreBoard.textContent = `Player score: ${playerScore} Computer score: ${computerScore}`
+        }else if(winner === 'computer') {
             computerScore++;
-            console.log(`The computer plays ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`)
-            console.log(`You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}`)
-        } else if (winner === 'tie') {
-            console.log(`The computer plays ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}`)
-            console.log(`It's a tie! You both played ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}`)
+            scoreBoard.textContent = `Player score: ${playerScore} Computer score: ${computerScore}`
+        }else if (winner === 'tie') {
+    
         }
     }
-    if (playerScore > computerScore) {
-        console.log(`You are the winner! Your score was ${playerScore} and the computer's score was ${computerScore}`)
-    } else if (playerScore < computerScore) {
-        console.log(`You Lose! Your score was ${playerScore} and the computer's score was ${computerScore}`)
-    } else if (playerScore === computerScore) {
-        console.log(`It's a tie! You both scored ${playerScore}`)
+    
+
+    if (playerScore === 5 || computerScore === 5) {
+        gameOver = true;
+        if(playerScore === 5) {
+            gameOverMessage.textContent = 'Game over, you win!'
+        } else if (computerScore === 5) {
+            gameOverMessage.textContent = 'Game over, computer wins!'
+        }
+    }
+});
+
+const paper = document.querySelector('.paper');
+paper.addEventListener('click', () => {
+    if(!gameOver) {
+        const winner = playRound('rock', computerPlay());
+        if(winner === 'player') {
+            playerScore++;
+            scoreBoard.textContent = `Player score: ${playerScore} Computer score: ${computerScore}`
+        }else if(winner === 'computer') {
+            computerScore++;
+            scoreBoard.textContent = `Player score: ${playerScore} Computer score: ${computerScore}`
+        }else if (winner === 'tie') {
+    
+        }
+    }
+    
+
+    if (playerScore === 5 || computerScore === 5) {
+        gameOver = true;
+        if(playerScore === 5) {
+            gameOverMessage.textContent = 'Game over, you win!'
+        } else if (computerScore === 5) {
+            gameOverMessage.textContent = 'Game over, computer wins!'
+        }
+    }
+});
+
+const scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', () => {
+    if(!gameOver) {
+        const winner = playRound('rock', computerPlay());
+        if(winner === 'player') {
+            playerScore++;
+            scoreBoard.textContent = `Player score: ${playerScore} Computer score: ${computerScore}`
+        }else if(winner === 'computer') {
+            computerScore++;
+            scoreBoard.textContent = `Player score: ${playerScore} Computer score: ${computerScore}`
+        }else if (winner === 'tie') {
+    
+        }
     }
 
-}
-
-game();
+    if (playerScore === 5 || computerScore === 5) {
+        gameOver = true;
+        if(playerScore === 5) {
+            gameOverMessage.textContent = 'Game over, you win!'
+        } else if (computerScore === 5) {
+            gameOverMessage.textContent = 'Game over, computer wins!'
+        }
+    }
+});
